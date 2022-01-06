@@ -11,6 +11,8 @@ import (
 	"go-docker/common"
 )
 
+// 基本上对 docker 初始化要做的事情都放在了这个文件中，主要是启动一个容器，然后对该容器做一些资源限制，这里需要关注的是 container.NewParentProcess(tty)，它会给我们返回一个被 namesapce 隔离的进程。这个函数在 process.go 文件里
+
 // 创建一个会隔离namespace进程的Command
 func NewParentProcess(tty bool, volume, containerName, imageName string, envs []string) (*exec.Cmd, *os.File) {
 	readPipe, writePipe, _ := os.Pipe()
