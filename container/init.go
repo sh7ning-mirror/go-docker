@@ -12,6 +12,8 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+//这个函数会通过 /proc/self/exe init 来调用自身我们定义的 initCommand 命令，然后给该进程设置隔离信息。看一下我们的 initCommand 干了什么事，这个命令的内容在 init.go 文件里。
+
 // 本容器执行的第一个进程
 // 使用mount挂载proc文件系统
 // 以便后面通过`ps`等系统命令查看当前进程资源的情况
