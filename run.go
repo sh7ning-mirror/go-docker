@@ -13,6 +13,8 @@ import (
 	"go-docker/container"
 )
 
+// run 命令主要就是启动一个容器，然后对该进程设置隔离，init 是 run 命令中调用的，不是我们自身通过命令行调用的，这里我们主要关注 Run(cmdArray, tty, res) 函数即可，它接收我们传递过来的参数，tty 表示是否前台运行，对应 docker 的 -ti 命令，Run 函数写在了 run.go 文件中
+
 func Run(cmdArray []string, tty bool, res *subsystem.ResourceConfig, containerName, imageName, volume, net string, envs, ports []string) {
 	containerID := container.GenContainerID(10)
 	if containerName == "" {
